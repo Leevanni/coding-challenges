@@ -1,5 +1,7 @@
 package com.example.challenges;
 
+import java.util.HashMap;
+
 public class CodingQuestions {
 
     // Find factors of N
@@ -106,15 +108,35 @@ public class CodingQuestions {
 	}
 	
 	
+//	public int findPeakElement(int[] nums) {
+//		int left = 0;
+//		int right = nums.length - 1;
+//		
+//		
+//		while (left < right) {
+//			int mid = left + (right - left) / 2;
+//			
+//			if (nums[mid] < nums[mid + 1]) {
+//				left = mid + 1;
+//			} else {
+//				right = mid;
+//			}
+//		}
+//		
+//		return left;
+//	}
+
+	
 	public int findPeakElement(int[] nums) {
+		
+		
 		int left = 0;
 		int right = nums.length - 1;
-		
 		
 		while (left < right) {
 			int mid = left + (right - left) / 2;
 			
-			if (nums[mid] < nums[mid + 1]) {
+			if (nums[mid] < nums[ mid + 1]) {
 				left = mid + 1;
 			} else {
 				right = mid;
@@ -123,4 +145,50 @@ public class CodingQuestions {
 		
 		return left;
 	}
+
+	
+	public static int[] twoSum(int nums[], int target) {
+		
+		int[] results = new int[2];
+		
+		HashMap<Integer, Integer> hash = new HashMap<>();
+		
+		for (int i = 0; i < nums[i]; i++) {
+			
+			int compliment = target - nums[i];
+			
+			if (hash.containsKey(compliment)) {
+				results[1] = i;
+				results[0] = hash.get(compliment);
+				
+				return results;
+			} else {
+				hash.put(nums[i], i);
+			}
+		}
+		
+		return results;
+	}
+	
+	
+	public static boolean validPalidrome(String str) {
+		str = str.toLowerCase().replaceAll("[^a-z0-9]", "");
+		int left = 0;
+		int right = str.length() - 1;
+		char[] charArray = str.toCharArray();
+		
+		while (left <= right) {
+			if (charArray[left] != charArray[right]) {
+				return false;
+			}
+			
+			left += 1;
+			right -= 1;
+		}
+		
+		return true;
+	}
+	
+
+
 }
