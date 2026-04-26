@@ -1,6 +1,7 @@
 package com.example.challenges;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class CodingQuestions {
 
@@ -189,6 +190,44 @@ public class CodingQuestions {
 		return true;
 	}
 	
-
+	public static void middleOfLinkedList(LinkedList list) {
+	
+	
+	}
+	
+	public int[][] modifiedMatrix(int[][] matrix) {
+		int rows = matrix.length;
+		int cols = matrix[0].length;
+		
+		int[][] answer = new int[rows][cols];
+		int[] columnMax = new int[cols];
+		
+		for (int col = 0; col < cols; col++) {
+			int max = matrix[0][cols];
+			
+			for (int row = 0; row < rows; row++) {
+				
+				if (matrix[col][row] > max) {
+					max = matrix[col][row];
+				}
+			}
+			
+			columnMax[col] = max;
+		}
+		
+		
+		for (int row = 0; row < rows; row++ ) {
+			for (int col = 0; col < cols; col++) {
+				
+				if (matrix[col][row] == -1) {
+					answer[col][row] = columnMax[col];
+				} else {
+					answer[col][row] = matrix[col][row];
+				}
+			}
+		}
+		
+		return answer;
+	}
 
 }
