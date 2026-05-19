@@ -24,11 +24,6 @@ public class CodingQuestions {
     
     }
 
-    public static void main(String[] args) {
-
-    }
-    
-    
     public static int isPrimeNumber(int n) {
     	
     	for(int i = 1; i <= n; i++) {
@@ -129,29 +124,29 @@ public class CodingQuestions {
 	}
 
 	
-	public static int[] twoSum(int nums[], int target) {
-		
-		int[] results = new int[2];
-		
-		HashMap<Integer, Integer> hash = new HashMap<>();
-		
-		for (int i = 0; i < nums[i]; i++) {
-			
-			int compliment = target - nums[i];
-			
-			if (hash.containsKey(compliment)) {
-				results[1] = i;
-				results[0] = hash.get(compliment);
-				
-				return results;
-			} else {
-				hash.put(nums[i], i);
-			}
-		}
-		
-		return results;
-	}
-	
+//	public static int[] twoSum(int nums[], int target) {
+//		
+//		int[] results = new int[2];
+//		
+//		HashMap<Integer, Integer> hash = new HashMap<>();
+//		
+//		for (int i = 0; i < nums[i]; i++) {
+//			
+//			int compliment = target - nums[i];
+//			
+//			if (hash.containsKey(compliment)) {
+//				results[1] = i;
+//				results[0] = hash.get(compliment);
+//				
+//				return results;
+//			} else {
+//				hash.put(nums[i], i);
+//			}
+//		}
+//		
+//		return results;
+//	}
+//	
 	
 	public static boolean validPalidrome(String str) {
 		str = str.toLowerCase().replaceAll("[^a-z0-9]", "");
@@ -274,4 +269,57 @@ public class CodingQuestions {
 		
 		return left;
 	}
+	
+	
+	public static int[] twoSum(int nums[], int target) {
+		
+		int[] result = new int[2];
+		HashMap<Integer, Integer> complimentMap = new HashMap<>();
+		
+		for (int i = 0; i < nums.length; i++) {
+			
+			int compliment = target - nums[i];
+			
+			if (complimentMap.containsKey(compliment)) {
+				result[0] = nums[i];
+				result[1] = complimentMap.get(compliment);
+			} else {
+				complimentMap.put(nums[i], i);
+			}
+		}
+		
+		return result;
+	}
+	
+	
+    public static int majorityElement(int[] nums) {
+        
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        int majorityThreshold = nums.length / 2;
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                map.put(nums[i], map.get(nums[i]) + 1);
+                
+                if (map.get(nums[i]) > majorityThreshold) {
+                    return nums[i];
+                } 
+            } else {
+                map.put(nums[i], 1);
+            }
+        }
+
+        return -1;
+    }
+    
+    public static void main(String[] args) {
+
+    	int[] nums = new int[]{3,2,3};
+    	
+    	
+    	int result = majorityElement(nums);
+    	
+    	System.out.println(result);
+    }
+	
 }
