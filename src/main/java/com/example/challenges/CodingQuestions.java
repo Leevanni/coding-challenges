@@ -312,6 +312,28 @@ public class CodingQuestions {
         return -1;
     }
     
+    public boolean containsDuplicate(int[] nums) {
+        
+        HashMap<Integer, Integer> numFrequency = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+
+            if (numFrequency.containsKey(nums[i])) {
+                numFrequency.put(nums[i], numFrequency.get(nums[i]) + 1);
+                
+                if (numFrequency.get(nums[i]) >= 2) {
+                    return true;
+                } 
+            
+            } else {
+                numFrequency.put(nums[i], 1);
+            }
+        }
+
+        return false;
+    }
+
+    
     public static void main(String[] args) {
 
     	int[] nums = new int[]{3,2,3};
