@@ -1,5 +1,6 @@
 package com.example.challenges;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -336,12 +337,55 @@ public class CodingQuestions {
     
     public static void main(String[] args) {
 
-    	int[] nums = new int[]{3,2,3};
+    	String word = "racecar";
     	
     	
-    	int result = majorityElement(nums);
+    	boolean result = isPalindrome(word);
     	
     	System.out.println(result);
+    }
+    
+    public static boolean isPalindrome(String str) {
+    	
+    	char[] strArray = str.toCharArray();
+    	
+    	int left = 0;
+    	int right = strArray.length - 1;
+    	
+    	while (left <= right) {
+    		
+    		if (strArray[left] != strArray[right]) {
+    			return false;
+    		}
+    		
+    		left++;
+    		right--;
+    	}
+    	
+    	return true;
+    }
+    
+    public String largestInteger(int[] nums) {
+    	
+    	String[] strs = new String[nums.length];
+    	
+    	for (int i = 0; i < nums.length; i++) {
+    		strs[i] = String.valueOf(nums[i]);
+    	}
+    	
+    	Arrays.sort(strs, (a, b) -> (b + a).compareTo(a + b));
+    	
+    	if (strs[0].equals("0")) {
+    		return "0";
+    	}
+    	
+    	StringBuilder sb = new StringBuilder();
+    	
+    	for (String str : strs) {
+    		sb.append(str);
+    	}
+    	
+    	return sb.toString();
     }
 	
 }
